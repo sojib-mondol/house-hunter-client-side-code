@@ -1,20 +1,52 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useForm } from 'react-hook-form';
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm(); // ract hook from 
-    const [signUpError, setSignUPError] = useState('')
+    const [signUpError, setSignUpError] = useState('');
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const from = location.state?.from?.pathname || '/';
 
-    const handleSignUp = (data) => {
-        console.log(data);
-        setSignUPError('');
+    // const handleSignUp = (data) => {
+    //     console.log(data);
+    //     setSignUPError('');
 
-    }
+        
+
+    // }
+
+    const handleSignUp = async (data) => {
+        console.log(data);
+        setSignUpError('');
+        try {
+          const response = await fetch('http://localhost:5000/register', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          });
+    
+          if (response.ok) {
+            const { token } = await response.json();
+            // Handle successful registration, e.g., save the token to local storage
+            localStorage.setItem('token', token);
+            toast.success('Registration successful!');
+            navigate(from, {replace: true}); 
+          } else {
+            const errorData = await response.json();
+            setSignUpError(errorData.message);
+          }
+        } catch (error) {
+          console.error('Error registering user:', error);
+          setSignUpError('An error occurred during registration');
+        }
+      };
 
 
     return (

@@ -1,33 +1,44 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-    };
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
-    return (
-        <div>
-      <nav className="flex justify-between lg:justify-normal items-center py-4 px-10 bg-white/80 backdrop-blur-md shadow-md w-full sticky top-0 left-0 right-0 z-10">
+  return (
+    <div>
+      <nav className="flex justify-between  items-center py-4 px-10 bg-white/80 backdrop-blur-md shadow-md w-full sticky top-0 left-0 right-0 z-10">
         <div className="flex items-center">
           <div className="cursor-pointer">
             <h3 className="text-2xl font-medium text-blue-500 mr-[44px]">
               {/* <img src="sd" alt="this is logo img" /> */}
-              <Link to='/'>House Hunter</Link>
+              <Link to="/">House Hunter</Link>
             </h3>
           </div>
         </div>
 
-        <div className="lg:flex hidden gap-x-[44px] ">
-          <Link to='/' className="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300">
+        <div className="lg:flex items-center hidden gap-x-[44px] ">
+          <Link
+            to="/"
+            className="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300"
+          >
             Home
           </Link>
-          <Link to='/dashboard' className="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300">
+          <Link
+            to="/dashboard"
+            className="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300"
+          >
             Dashboard
           </Link>
-         
+          <Link
+            to="/login"
+            className="flex bg-blue-300 hover:bg-blue-600 rounded-lg px-4 py-2 text-black hover:text-white cursor-pointer transition-colors duration-300"
+          >
+            Login
+          </Link>
         </div>
 
         {/* <div className="flex items-center space-x-5">
@@ -71,18 +82,29 @@ const Navbar = () => {
       {isOpen && (
         <div className="lg:hidden">
           <div className="flex flex-col items-start py-2 px-10 space-y-2">
-            <Link to='/add-user' className="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300">
-            Add user
+            <Link
+              to="/"
+              className="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300"
+            >
+              Home
             </Link>
-            <Link to='/view-all-user' className="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300">
-            View all user
+            <Link
+              to="/dashboard"
+              className="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300"
+            >
+              Dashboard
             </Link>
-            
+            <Link
+              to="/login"
+              className="flex bg-blue-300 hover:bg-blue-600 rounded-lg px-4 py-2 text-black hover:text-white cursor-pointer transition-colors duration-300"
+            >
+              Login
+            </Link>
           </div>
         </div>
       )}
     </div>
-    );
+  );
 };
 
 export default Navbar;

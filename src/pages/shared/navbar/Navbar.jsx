@@ -1,11 +1,27 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  //const history = useHistory();
+  const navigate = useNavigate();
+
+  const user = JSON.parse(localStorage?.getItem("user"));
+  //console.log("user", user);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleLogout = () => {
+    // Clear the stored token or authentication-related data
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    // Redirect the user to the login page after logout
+    //history.push("/login")
+    toast.success("You have successfully logged out!");
+    navigate("/");
   };
 
   return (
@@ -33,22 +49,24 @@ const Navbar = () => {
           >
             Dashboard
           </Link>
-          <Link
-            to="/login"
-            className="flex bg-blue-300 hover:bg-blue-600 rounded-lg px-4 py-2 text-black hover:text-white cursor-pointer transition-colors duration-300"
-          >
-            Login
-          </Link>
-        </div>
 
-        {/* <div className="flex items-center space-x-5">
-          <a className="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300">
-            Register
-          </a>
-          <a className="flex text-gray-600 cursor-pointer transition-colors duration-300 font-semibold text-blue-600">
-            Login
-          </a>
-        </div> */}
+          {user?.name ? (
+            <>
+              <button
+                className="btn btn-outline btn-warning"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="btn btn-outline btn-success">
+                Login
+              </Link>
+            </>
+          )}
+        </div>
 
         <div className="lg:hidden">
           <button
@@ -94,12 +112,22 @@ const Navbar = () => {
             >
               Dashboard
             </Link>
-            <Link
-              to="/login"
-              className="flex bg-blue-300 hover:bg-blue-600 rounded-lg px-4 py-2 text-black hover:text-white cursor-pointer transition-colors duration-300"
-            >
-              Login
-            </Link>
+            {user?.name ? (
+              <>
+                <button
+                  className="btn btn-outline btn-warning"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link to="/login" className="btn btn-outline btn-success">
+                  Login
+                </Link>
+              </>
+            )}
           </div>
         </div>
       )}

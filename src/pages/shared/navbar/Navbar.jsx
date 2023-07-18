@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  //const history = useHistory();
   const navigate = useNavigate();
 
   const user = JSON.parse(localStorage?.getItem("user"));
@@ -18,8 +17,6 @@ const Navbar = () => {
     // Clear the stored token or authentication-related data
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    // Redirect the user to the login page after logout
-    //history.push("/login")
     toast.success("You have successfully logged out!");
     navigate("/");
   };
@@ -50,7 +47,7 @@ const Navbar = () => {
             Dashboard
           </Link>
 
-          {user?.name ? (
+          {user?.email ? (
             <>
               <button
                 className="btn btn-outline btn-warning"

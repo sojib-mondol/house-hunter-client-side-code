@@ -15,9 +15,41 @@ const Login = () => {
 
   const from = location.state?.from?.pathname || "/";
 
-  const handleLogin = (data) => {
+  const handleLogin = async (data) => {
     console.log(data);
     setLoginError("");
+
+    const userData = {
+      email: data?.email,
+      password: data?.password,
+    };
+
+    //  console.log(userData);
+
+    try {
+      const response = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
+
+      if (response.ok) {
+        const { token } = await response.json();
+        // Handle successful login, e.g., save the token to local storage
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(userData));
+        // Redirect the user to the desired route after successful login
+        navigate(from);
+      } else {
+        const errorData = await response.json();
+        setLoginError(errorData.message);
+      }
+    } catch (error) {
+      console.error("Error logging in user:", error);
+      setLoginError("An error occurred during login");
+    }
   };
 
   return (

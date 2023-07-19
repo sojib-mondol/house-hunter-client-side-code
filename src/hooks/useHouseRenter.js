@@ -9,7 +9,7 @@ const useHouseRenter = email => {
             fetch(`http://localhost:5000/users/house-renter/${email}`)
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
+                    //console.log(data);
                     setIsRenter(data.isHouseRenter);
                     setIsRenterLoading(false);
                 })

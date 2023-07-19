@@ -50,7 +50,7 @@ const OwnerDashboard = () => {
         if (data.deletedCount > 0) {
           refetch();
           setModal(false);
-          toast.success(`Deleted successfully`);
+          toast.success(`Deleted successfully!`);
         }
       });
   };
@@ -154,7 +154,7 @@ const OwnerDashboard = () => {
                         </td>
                        
                         <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                          <Link to={`/update-user/${user?._id}`}>
+                          <Link to={`/update-house/${user?._id}`}>
                             <button className="ml-[20px] mt-[10px] btn-primary text-white px-[20px] text-[16px] py-[2px] rounded-[4px]">
                               Edit
                             </button>

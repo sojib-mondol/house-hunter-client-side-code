@@ -17,7 +17,7 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/dashboard";
 
   const handleLogin = async (data) => {
-    console.log(data);
+    //console.log(data);
     setLoginError("");
 
     const userData = {

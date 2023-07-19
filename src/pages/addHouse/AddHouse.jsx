@@ -297,9 +297,9 @@ const AddHouse = () => {
             <input
               name="img"
               type="file"
-              placeholder="input profile picture"
+              placeholder="input  picture"
               className={`${inputStyle}`}
-              {...register("img", { required: "Input profile picture" })}
+              {...register("img", { required: "Input picture" })}
               aria-invalid={errors.img ? "true" : "false"}
             />
             {errors.img && (

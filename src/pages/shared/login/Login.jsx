@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -41,6 +42,7 @@ const Login = () => {
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(userData));
         // Redirect the user to the desired route after successful login
+        toast.success("Login successfully");
         navigate(from);
       } else {
         const errorData = await response.json();
@@ -53,7 +55,7 @@ const Login = () => {
   };
 
   return (
-    <div className="h-[800px] flex justify-center items-center">
+    <div className="min-h-screen flex justify-center items-center">
       <div className="w-96 p-7">
         <h2 className="text-xl text-center">Login</h2>
         <form onSubmit={handleSubmit(handleLogin)}>

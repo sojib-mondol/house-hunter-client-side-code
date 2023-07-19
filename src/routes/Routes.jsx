@@ -5,9 +5,8 @@ import PageNotFound from "../pages/shared/pageNotFound/PageNotFound";
 import SignUp from "../pages/shared/signUp/SignUp";
 import Login from "../pages/shared/login/Login";
 import Dashboard from "../pages/dashboard/dashboard/Dashboard";
-import OwnerRoutes from "./OwnerRoutes";
-import RenterRoutes from "./RenterRoutes";
 import PrivateRoutes from "./PrivateRoutes";
+import AddHouse from "../pages/addHouse/AddHouse";
 
 const router = createBrowserRouter([
     {
@@ -32,6 +31,10 @@ const router = createBrowserRouter([
                 path: '/dashboard',
                 element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>
             },
+            {
+                path: '/add-house',
+                element: <PrivateRoutes><AddHouse></AddHouse></PrivateRoutes>
+            }
         ]
     }
 ])

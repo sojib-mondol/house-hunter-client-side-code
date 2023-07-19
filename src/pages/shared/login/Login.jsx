@@ -14,7 +14,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/dashboard";
 
   const handleLogin = async (data) => {
     console.log(data);
@@ -61,7 +61,7 @@ const Login = () => {
         <form onSubmit={handleSubmit(handleLogin)}>
           <div className="form-control w-full max-w-xs">
             <label className="label">
-              {" "}
+             
               <span className="label-text">Email</span>
             </label>
             <input
@@ -77,7 +77,7 @@ const Login = () => {
           </div>
           <div className="form-control w-full max-w-xs">
             <label className="label">
-              {" "}
+              
               <span className="label-text">Password</span>
             </label>
             <input

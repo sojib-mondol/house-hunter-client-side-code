@@ -34,7 +34,7 @@ const SignUp = () => {
     //console.log("userData ::", userData);
 
     try {
-      const response = await fetch("http://localhost:5000/register", {
+      const response = await fetch("https://house-hunter-server-side.vercel.app/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

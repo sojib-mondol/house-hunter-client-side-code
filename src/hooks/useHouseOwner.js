@@ -6,7 +6,7 @@ const useHouseOwner = (email) => {
 
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/users/house-owner/${email}`)
+      fetch(`https://house-hunter-server-side.vercel.app/users/house-owner/${email}`)
         .then((res) => res.json())
         .then((data) => {
           //console.log(data);

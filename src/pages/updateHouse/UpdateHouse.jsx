@@ -48,7 +48,7 @@ const UpdateHouse = () => {
             email: user?.email,
           };
           //save task to the database
-          fetch(`http://localhost:5000/update/${params?.id}`, {
+          fetch(`https://house-hunter-server-side.vercel.app/update/${params?.id}`, {
             method: "PUT",
             headers: {
               "content-type": "application/json",
@@ -66,7 +66,7 @@ const UpdateHouse = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/house/${params?.id}`)
+    fetch(`https://house-hunter-server-side.vercel.app/house/${params?.id}`)
       .then((res) => res.json())
       .then((data) => SetHouse(data))
       .catch((err) => {

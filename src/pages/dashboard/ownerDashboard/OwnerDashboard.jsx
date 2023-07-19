@@ -10,7 +10,7 @@ const OwnerDashboard = () => {
   const [singleUser, setSingleUser] = useState([]);
 
   const getSIngleUser = (id) => {
-    fetch(`http://localhost:5000/house/${id}`)
+    fetch(`https://house-hunter-server-side.vercel.app/house/${id}`)
       .then((res) => res.json())
       .then((data) => setSingleUser(data));
   };
@@ -29,7 +29,7 @@ const OwnerDashboard = () => {
     queryKey: ["houses"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/houses/${user?.email}`
+        `https://house-hunter-server-side.vercel.app/houses/${user?.email}`
       );
       const houses = await res.json();
       setItems(houses);
@@ -39,7 +39,7 @@ const OwnerDashboard = () => {
 
   // for delete
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/house/${id}`, {
+    fetch(`https://house-hunter-server-side.vercel.app/house/${id}`, {
       method: "DELETE",
       headers: {
         //authorization: `bearer ${localStorage.getItem('accessToken')}`

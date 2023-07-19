@@ -49,7 +49,7 @@ const AddHouse = () => {
           //console.log(houseDetails);
           
           // save user to the database
-          fetch("http://localhost:5000/houses", {
+          fetch("https://house-hunter-server-side.vercel.app/houses", {
             method: "POST",
             headers: {
               "content-type": "application/json",
